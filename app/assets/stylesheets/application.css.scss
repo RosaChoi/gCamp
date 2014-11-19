@@ -17,16 +17,51 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+body {
+  background-color: #CCC;
+}
+.content-center {
+  padding: 0 3em;
+  background-color: #FFF;
+}
 .panel-body {
   height: 100px;
 }
 .row {
   margin-bottom: 2em;
 }
-.jumbotron {
-  border: 1px solid #696969;
+#main-gcamp {
   margin-top: 6em;
+  border-radius: 0;
+  border: 1px solid #696969;
 }
 .responsive {
   width: 99%;
+}
+
+/* FOOTER */
+.fixed-bottom {
+  height: 80px;
+  padding: 1.5em 0;
+  margin: 0 6em;
+}
+.list-inline {
+  border-top: 1px solid #696969;
+  padding-top: 2em;
+}
+.fixed-bottom ul li {
+  padding-right: 1.2em;
+}
+
+/* ABOUT */
+.message {
+  line-height: 1.5;
+  padding: 2em;
+}
+.page-title {
+  margin-top: 3em;
+}
+.page-title,
+.about-img {
+  padding-bottom: 2em;
 }
