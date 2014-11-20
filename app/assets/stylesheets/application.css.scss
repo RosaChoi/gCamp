@@ -21,7 +21,6 @@ body {
   background-color: #CCC;
 }
 .content-center {
-  padding: 0 3em;
   background-color: #FFF;
 }
 .panel-body {
@@ -44,6 +43,10 @@ body {
   padding-bottom: 1.5em;
   font-size: 90%;
 }
+.navbar-brand {
+  color: #FFF;
+  padding-left: 3em;
+}
 /* FOOTER */
 
 .list-inline {
@@ -54,14 +57,14 @@ body {
 /* ABOUT */
 .message {
   line-height: 1.5;
-  padding: 2em;
+  padding-bottom: 4em;
 }
 .page-title {
   margin-top: 3em;
 }
 .page-title,
 .about-img {
-  padding-bottom: 2em;
+  padding-bottom: 1em;
 }
 .quotes {
   line-height: 1.5;
