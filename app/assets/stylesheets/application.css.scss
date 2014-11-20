@@ -38,19 +38,17 @@ body {
 .responsive {
   width: 99%;
 }
-
-/* FOOTER */
-.fixed-bottom {
-  height: 80px;
-  padding: 1.5em 0;
-  margin: 0 6em;
+/* Welcome Page */
+.author-name {
+  color: lighten(#000, 60%);
+  padding-bottom: 1.5em;
+  font-size: 90%;
 }
+/* FOOTER */
+
 .list-inline {
   border-top: 1px solid #696969;
   padding-top: 2em;
-}
-.fixed-bottom ul li {
-  padding-right: 1.2em;
 }
 
 /* ABOUT */
