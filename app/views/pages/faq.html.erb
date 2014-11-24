@@ -1,0 +1,12 @@
+<div class="container content-center">
+  <div class="row col-lg-8 col-md-offset-2">
+    <h1 class="page-title">Frequently Asked Questions</h1>
+    <div class="faq">
+      <ul class="qa-list list-unstyled">
+        <% @faqs.each do |question, answer| %>
+        <li><h4><%= question %></h4></li>
+        <li class=""><%= answer %></li>
+        <% end %>
+      </ul>
+    </div>
+</div>
