@@ -58,7 +58,7 @@
 <ul class="list-unstyled">
   <% @quotes.each do |verse| %>
   <li><strong><%= verse.quote %></strong></li>
-  <li><em><%= verse.author %></em></li>
+  <li><em class="authors"><%= verse.author %></em></li>
   <br>
   <% end %>
 </ul>
