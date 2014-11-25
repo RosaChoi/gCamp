@@ -1,68 +1,64 @@
-<div class="container content-center">
-  <div class="row col-md-8 col-md-offset-2">
-    <div id="main-gcamp" class="jumbotron">
-      <h1>gCamp</h1>
-      <h3>Your life, organized.</h3>
-    </div>
+<div id="main-gcamp" class="jumbotron">
+  <h1>gCamp</h1>
+  <h3>Your life, organized.</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+    <%= image_tag 'edu02.jpg', :class=>"img-responsive" %>
   </div>
-  <div class="row col-lg-8 col-md-offset-2">
-    <div class="col-sm-4 center">
-      <%= image_tag 'edu02.jpg', :class=>"responsive" %>
-    </div>
-    <div class="col-sm-4 center">
-      <%= image_tag 'edu03.jpg', :class=>"responsive"%>
-    </div>
-    <div class="col-sm-4 center">
-      <%= image_tag 'edu01.jpg', :class=>"responsive" %>
-    </div>
+  <div class="col-md-4 center">
+    <%= image_tag 'edu03.jpg', :class=>"img-responsive" %>
   </div>
-  <div class="row col-lg-8 col-md-offset-2">
-    <div class="col-sm-4">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <h3 class="panel-title">Tasks</h3>
-        </div>
-        <div class="panel-body">
-          Grouped by projects and lists. Just the way you like'em.
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <h3 class="panel-title">Documents</h3>
-        </div>
-        <div class="panel-body">
-          <ul>
-            <li>Upload</li>
-            <li>Comment</li>
-            <li>Revise</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <h3 class="panel-title">Comments</h3>
-        </div>
-        <div class="panel-body">
-          <ul>
-            <li>Comment on tasks and documents</li>
-            <li>Get email notification</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row col-md-8 col-md-offset-2">
-    <blockquote>
-      <ul class="list-unstyled">
-        <% @quotes.each do |quote, author| %>
-        <li><strong><%= quote %></strong></li>
-        <li class="author-name"><em><%= author %></em></li>
-        <% end %>
-      </ul>
-    </blockquote>
+  <div class="col-md-4 center">
+    <%= image_tag 'edu01.jpg', :class=>"img-responsive" %>
   </div>
 </div>
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Tasks</h3>
+      </div>
+      <div class="panel-body">
+        Grouped by projects and lists. Just the way you like'em.
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Documents</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+          <li>Upload</li>
+          <li>Comment</li>
+          <li>Revise</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Comments</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+          <li>Comment on tasks and documents</li>
+          <li>Get email notification</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ul class="list-unstyled">
+  <% @quotes.each do |verse| %>
+  <li><strong><%= verse.quote %></strong></li>
+  <li><em><%= verse.author %></em></li>
+  <br>
+  <% end %>
+</ul>

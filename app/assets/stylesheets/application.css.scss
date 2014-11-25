@@ -18,60 +18,18 @@
  @import "bootstrap";
 
 body {
-  background-color: #CCC;
-}
-.content-center {
-  background-color: #FFF;
-}
-.panel-body {
-  height: 100px;
-}
-.row {
-  margin-bottom: 2em;
-}
-#main-gcamp {
-  margin-top: 6em;
-  border-radius: 0;
-  border: 1px solid #696969;
-}
-.responsive {
-  width: 99%;
-}
-/* Welcome Page */
-.author-name {
-  color: lighten(#000, 60%);
-  padding-bottom: 1.5em;
-  font-size: 90%;
-}
-.navbar-brand {
-  color: #FFF;
-  padding-left: 3em;
-}
-/* FOOTER */
-
-.list-inline {
-  border-top: 1px solid #696969;
-  padding-top: 2em;
+  padding-top: 80px;
 }
 
-/* ABOUT */
-.message {
-  line-height: 1.5;
-  padding-bottom: 4em;
-}
-.page-title {
-  margin-top: 3em;
-}
-.page-title,
-.about-img {
-  padding-bottom: 1em;
-}
-.quotes {
-  line-height: 1.5;
-}
-
-/* FAQ */
-.qa-list li {
-  line-height: 1.5;
+.img-responsive {
+  width: 100%;
   padding-bottom: 2em;
+}
+
+.panel-body {
+  min-height: 8em;
+}
+
+footer {
+  height: 3em;
 }
