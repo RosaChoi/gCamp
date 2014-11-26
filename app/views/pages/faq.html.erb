@@ -2,10 +2,10 @@
 <br><br>
 
 <ul class="list-unstyled">
-  <% @qa_sets.each do |qa_object| %>
-    <li><strong><%= qa_object.question %></strong></li>
+  <% @faqs.each do |faq| %>
+    <li><strong><%= faq.question %></strong></li>
     <br>
-    <li><%= qa_object.answer %></li>
+    <li><%= faq.answer %></li>
     <br>
   <% end %>
 </ul>
