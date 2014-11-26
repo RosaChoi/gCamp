@@ -17,7 +17,9 @@
     <div class="container">
 
       <% if notice %>
-        <p id="notice" class="text-success"><%= notice %></p>
+        <div id="notice" class="alert alert-success text-center">
+          <%= notice %>
+        </div>
       <% end %>
 
       <%= yield %>
