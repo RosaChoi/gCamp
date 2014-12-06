@@ -5,6 +5,14 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
     @tasks = Task.all
+
+    if params[:complete]
+      @tasks = @tasks.where(complete: params[:complete])
+      @active_page = "Incomplete Tasks"
+    else
+      @active_page = "All Tasks"
+    end
+
   end
 
   # GET /tasks/1
@@ -59,6 +67,11 @@ class TasksController < ApplicationController
       format.html { redirect_to tasks_url, notice: 'Task was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def incomplete
+    @tasks = Task.all.where(complete: false)
+    render :index
   end
 
   private

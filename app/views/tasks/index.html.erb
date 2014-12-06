@@ -1,6 +1,8 @@
 <div class="page-header">
   <div class="pull-right">
-    <%= link_to "New Task", new_task_path, class: "btn btn-info" %>
+    <%= link_to 'All Tasks', tasks_path, class: ("active" if @active_page=="All Tasks") %> |
+    <%= link_to 'Incomplete Tasks', tasks_path(complete: false), class: ("active" if @active_page=="Incomplete Tasks") %>
+    <%= link_to "New Task", new_task_path, class: "btn btn-info newtask-btn" %>
   </div>
   <h1>Tasks</h1>
 </div>

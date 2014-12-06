@@ -36,3 +36,12 @@ em.authors {
 footer {
   height: 3em;
 }
+
+.active {
+  color: black;
+  pointer-events: none;
+}
+
+.newtask-btn {
+  margin-left: 2em;
+}

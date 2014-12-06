@@ -23,7 +23,7 @@
       <%= f.date_field :due_date, class:"form-control" %>
     </div>
   </div>
-  <% if Task.exists?(@task) %>
+  <% if params[:action] == "edit" %>
     <div class="form-group">
       <div class="checkbox">
         <div class="col-md-offset-1 col-md-4">
