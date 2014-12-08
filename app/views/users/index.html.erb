@@ -1,0 +1,28 @@
+<div class="page-header">
+  <div class="pull-right">
+    <%= link_to "New Users", new_user_path, class: "btn btn-info" %>
+  </div>
+  <h1>Users</h1>
+</div>
+
+<table class="table table-responsive">
+  <thead>
+    <tr>
+      <th class="col-sm-3">Name</th>
+      <th class="col-sm-9">Email</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= full_name = "#{user.first_name} #{user.last_name}" %></td>
+        <td><%= mail_to user.email %></td>
+        <td><%= link_to 'Show', user %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
