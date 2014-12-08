@@ -38,5 +38,19 @@
       <%= link_to 'cancel', users_path, class:"btn btn-default" %>
     </div>
   </div>
+  <% if params[:action] == "edit" %>
+    <div class="form-group actions">
+      <div class="col-sm-offset-2 col-sm-4">
+        <div class="well text-center">
+          <%= link_to 'Delete User', @user, method: :delete, data: { confirm: 'Are you sure?'}, class: 'btn btn-danger' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+
+
+
+
 
 <% end %>
