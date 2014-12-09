@@ -58,7 +58,7 @@
 <ul class="list-unstyled">
   <% @quotes.each do |quote| %>
   <li><strong>"<%= quote.quote %>"</strong></li>
-  <li><em class="text-muted"><%= "-#{quote.author}" %></em></li>
+  <li><em class="text-muted"><%= "- #{quote.author}" %></em></li>
   <br>
   <% end %>
 </ul>
