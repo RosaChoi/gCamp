@@ -1,6 +1,6 @@
 <div class="page-header">
   <div class="pull-right">
-    <%= link_to "New Users", new_user_path, class: "btn btn-info" %>
+    <%= link_to "New User", new_user_path, class: "btn btn-info" %>
   </div>
   <h1>Users</h1>
 </div>
@@ -20,6 +20,7 @@
         <td><%= link_to full_name = "#{user.first_name} #{user.last_name}", user %></td>
         <td><%= mail_to user.email %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
+      </tr>
     <% end %>
   </tbody>
 </table>

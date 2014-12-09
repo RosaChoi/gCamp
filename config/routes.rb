@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   resources :tasks
 
+  resources :projects
+
   root to: 'welcome#home'
 
   get 'about' => 'pages#about'
