@@ -11,15 +11,22 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.create(project_params)
-    redirect_to @project, notice: 'Project was successfully created'
+    if @project.save
+      redirect_to @project, notice: 'Project was successfully created'
+    else
+      render :new
+    end
   end
 
   def show
   end
 
   def update
-    @project.update(project_params)
-    redirect_to @project, notice: 'Project was successfully updated'
+    if @project.update(project_params)
+      redirect_to @project, notice: 'Project was successfully updated'
+    else
+      render :edit
+    end
   end
 
   def destroy
