@@ -11,10 +11,20 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.create(project_params)
-    redirect_to projects_path, notice: 'Project was successfully created.'
+    redirect_to @project, notice: 'Project was successfully created'
   end
 
   def show
+  end
+
+  def update
+    @project.update(project_params)
+    redirect_to @project, notice: 'Project was successfully updated'
+  end
+
+  def destroy
+    @project.destroy
+    redirect_to projects_url, notice: 'Project was successfully deleted'
   end
 
   private
