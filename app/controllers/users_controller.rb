@@ -17,12 +17,19 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-    redirect_to users_path, notice: 'User was successfully created.'
+    if @user.save
+      redirect_to users_path, notice: 'User was successfully created.'
+    else
+      render :new
+    end
   end
 
   def update
-    @user.update(user_params)
+    if @user.update(user_params)
     redirect_to users_path, notice: 'User was successfully updated.'
+    else
+      render :edit
+    end
   end
 
   def destroy
