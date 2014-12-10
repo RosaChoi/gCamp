@@ -4,7 +4,7 @@ class Task < ActiveRecord::Base
   validate :due_in_future, on: :create
 
   def due_in_future
-    if due_date < Date.today then
+    if due_date < Date.today 
       errors.add(:due_date, "cannot be in the past")
     end
   end
