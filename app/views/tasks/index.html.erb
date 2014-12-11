@@ -22,7 +22,7 @@
     <tr>
         <td class="col-md-4"><%= task.description %></td>
         <td class="col-md-4"><%= task.complete %></td>
-        <td class="col-md-4"><%= task.due_date.strftime('%x') %></td>
+        <td class="col-md-4"><%= task.due_date %></td>
         <div class="pull-right">
           <td><%= link_to 'Show', task, class:"btn btn-success" %></td>
           <td><%= link_to 'Edit', edit_task_path(task), class:"btn btn-info" %></td>
