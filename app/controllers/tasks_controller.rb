@@ -6,14 +6,6 @@ class TasksController < ApplicationController
   def index
     @tasks = Task.all
 
-    respond_to do |format|
-      format.html
-      format.csv do
-        headers['Content-Disposition'] = "attachment; filename=\"tasks-list\""
-        headers['Content-Type'] ||= 'text/csv'
-      end
-    end
-
     if params[:complete]
       @tasks = @tasks.where(complete: params[:complete])
       @active_page = "Incomplete Tasks"
@@ -21,7 +13,25 @@ class TasksController < ApplicationController
       @active_page = "All Tasks"
     end
 
+    if params[:order_by_description] == "true"
+      @tasks = @tasks.order(:description)
+    end
 
+    if params[:order_by_complete] == "true"
+      @tasks = @tasks.order(:complete)
+    end
+
+    if params[:order_by_due_date] == "true"
+      @tasks = @tasks.order(:due_date)
+    end
+
+    respond_to do |format|
+      format.html
+      format.csv do
+        headers['Content-Disposition'] = "attachment; filename=\"tasks-list\""
+        headers['Content-Type'] ||= 'text/csv'
+      end
+    end
 
   end
 
