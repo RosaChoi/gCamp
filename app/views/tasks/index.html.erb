@@ -31,4 +31,7 @@
     </tr>
     <% end %>
   </tbody>
+  <div class="pull-right">
+    <%= link_to " Download CSV", tasks_path(format: "csv"), class: "glyphicon glyphicon-download-alt btn btn-info" %>
+  </div>
 </table>

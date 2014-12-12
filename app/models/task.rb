@@ -1,4 +1,5 @@
 class Task < ActiveRecord::Base
+
   validates :description, presence:true
 
   validate :due_in_future, on: :create

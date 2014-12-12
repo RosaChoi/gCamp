@@ -6,12 +6,22 @@ class TasksController < ApplicationController
   def index
     @tasks = Task.all
 
+    respond_to do |format|
+      format.html
+      format.csv do
+        headers['Content-Disposition'] = "attachment; filename=\"tasks-list\""
+        headers['Content-Type'] ||= 'text/csv'
+      end
+    end
+
     if params[:complete]
       @tasks = @tasks.where(complete: params[:complete])
       @active_page = "Incomplete Tasks"
     else
       @active_page = "All Tasks"
     end
+
+
 
   end
 
