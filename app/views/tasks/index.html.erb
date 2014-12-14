@@ -2,7 +2,7 @@
   <div class="pull-right">
     <%= link_to 'All Tasks', tasks_path, class: ("active" if @active_page=="All Tasks") %> |
     <%= link_to 'Incomplete Tasks', tasks_path(complete: false), class: ("active" if @active_page=="Incomplete Tasks") %>
-    <%= link_to "New Task", new_task_path, class: "btn btn-info newtask-btn" %>
+    <%= link_to "New Task", new_task_path, class: "btn btn-info newtask-btn",id: "create-task-new-action"%>
   </div>
   <h1>Tasks</h1>
 </div>
@@ -24,9 +24,9 @@
         <td class="col-md-4"><%= task.complete %></td>
         <td class="col-md-4"><%= task.due_date %></td>
         <div class="pull-right">
-          <td><%= link_to 'Show', task, class:"btn btn-success" %></td>
-          <td><%= link_to 'Edit', edit_task_path(task), class:"btn btn-info" %></td>
-          <td><%= link_to 'Delete', task, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %></td>
+          <td><%= link_to 'Show', task, class:"btn btn-success", id: "show-task-#{task.id}-action"%></td>
+          <td><%= link_to 'Edit', edit_task_path(task), class:"btn btn-info", id: "edit-task-#{task.id}-action"%></td>
+          <td><%= link_to 'Delete', task, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger", id: "destroy-task-#{task.id}-action"%></td>
         </div>
     </tr>
     <% end %>

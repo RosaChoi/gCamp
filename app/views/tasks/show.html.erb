@@ -10,7 +10,7 @@
 
 <p>
   <strong>Due Date:</strong>
-  <%= @task.due_date.strftime('%x') %>
+  <%= @task.due_date %>
 </p>
 
 <%= link_to 'Edit', edit_task_path(@task) %> |

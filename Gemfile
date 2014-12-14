@@ -8,6 +8,14 @@ group :production do
   gem "rails_12factor"
 end
 
+group :development, :test do
+
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'launchy'
+
+end
+
 # uncomment if you want to use haml
 # gem 'haml-rails'
 
