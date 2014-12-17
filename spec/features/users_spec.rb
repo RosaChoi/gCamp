@@ -26,7 +26,7 @@ feature 'Users' do
     fill_in "last-name-field", with: "Choi"
     fill_in "email-field", with: "momo@gmail.com"
     click_on "submit-user"
-    expect(page).to have_content("1 error prohibited this user from being saved")
+    expect(page).to have_content("1 error prohibited this User from being saved:")
 
     fill_in "first-name-field", with: "Momo"
     click_on "submit-user"
@@ -41,11 +41,11 @@ feature 'Users' do
     click_on "create-user-new-action"
     fill_in "email-field", with: "foxy@gmail.com"
     click_on "submit-user"
-    expect(page).to have_content("2 errors prohibited this user from being saved")
+    expect(page).to have_content("2 errors prohibited this User from being saved")
 
     fill_in "last-name-field", with: "Fox"
     click_on "submit-user"
-    expect(page).to have_content("1 error prohibited this user from being saved")
+    expect(page).to have_content("1 error prohibited this User from being saved")
 
     fill_in "first-name-field", with: "Artic"
     click_on "submit-user"

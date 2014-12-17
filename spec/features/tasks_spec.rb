@@ -20,7 +20,7 @@ feature 'Users can CRUD tasks' do
     click_on "get-tasks-index"
     click_on "create-task-new-action"
     click_on "submit-task"
-    expect(page).to have_content("1 error prohibited this task")
+    expect(page).to have_content("1 error prohibited this Task from being saved:")
     fill_in "Description", with: "Hug Momo"
     click_on "submit-task"
 
