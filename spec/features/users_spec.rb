@@ -94,4 +94,23 @@ feature 'Users' do
     expect(page).to have_no_content("Momo")
   end
 
+  scenario "User can delete a user" do
+    user = User.create!(
+    first_name: "Christain",
+    last_name: "Bale",
+    email: "cbale@gmail.com"
+    )
+
+    visit root_path
+    click_on "get-users-index"
+    expect(page).to have_content("Bale")
+    click_on "edit-user-#{user.id}-action"
+    click_on "destroy-user-action"
+
+    expect(page).to have_no_content("Christain")
+    expect(page).to have_no_content("Bale")
+    expect(page).to have_no_content("cbale@gmail.com")
+    expect(page.current_path).to eq(users_path)
+  end
+
 end
