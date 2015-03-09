@@ -4,6 +4,8 @@ gem 'bootstrap-sass'
 
 gem "pg"
 
+gem 'bcrypt'
+
 group :production do
   gem "rails_12factor"
 end
