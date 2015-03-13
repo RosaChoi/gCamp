@@ -11,11 +11,20 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <%= link_to "gCamp", root_path, :class =>'navbar-brand' %>
+
+        <ul class="nav navbar-nav navbar-right">
+        <% if current_user %>
+          <li class="welcome-message">Welcome <%= current_user.first_name %></li>
+          <li><%= link_to "Sign Out", signout_path %></li>
+        <% else %>
+          <li><%= link_to "Sign Up", signup_path %></li>
+          <li><%= link_to "Sign In", signin_path %></li>
+        <% end %>
+        </ul>
       </div>
     </nav>
 
-    <div class="container">
-
+    <div id="mainContent" class="container">
       <% if notice %>
         <div id="notice" class="alert alert-success text-center">
           <%= notice %>
@@ -23,18 +32,18 @@
       <% end %>
 
       <%= yield %>
-      <hr>
     </div>
+
     <footer>
       <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
         <div class="container container-fluid">
           <ul class="nav navbar-navs">
-            <li><%= link_to "About", about_path %></li>
-            <li><%= link_to "Terms", terms_path %></li>
-            <li><%= link_to "FAQ", faq_path %></li>
-            <li><%= link_to "Projects", projects_path, id:"get-projects-index" %></li>
-            <li><%= link_to "Tasks", tasks_path, id:"get-tasks-index" %></li>
-            <li><%= link_to "Users", users_path, id:"get-users-index"%></li>
+            <%= link_to "About", about_path %>
+            <%= link_to "Terms", terms_path %>
+            <%= link_to "FAQ", faq_path %>
+            <%= link_to "Projects", projects_path, id:"get-projects-index" %>
+            <%= link_to "Tasks", tasks_path, id:"get-tasks-index" %>
+            <%= link_to "Users", users_path, id:"get-users-index" %>
           </ul>
         </div>
       </nav>

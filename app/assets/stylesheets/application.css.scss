@@ -17,8 +17,9 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
-body {
-  padding-top: 80px;
+#mainContent {
+  margin-top: 5em;
+  margin-bottom: 4em;
 }
 
 .img-responsive {
@@ -30,10 +31,18 @@ body {
   min-height: 8em;
 }
 
-footer {
-  height: 3em;
+footer .nav.navbar-navs a {
+  padding-right: 15px;
+  color: #333333;
 }
 
+footer .nav.navbar-navs a:hover {
+  color: rgba(#333333, 0.8)
+}
+
+footer .nav.navbar-navs {
+  padding-top: 10px;
+}
 .active {
   color: black;
   pointer-events: none;
@@ -41,4 +50,18 @@ footer {
 
 .newtask-btn {
   margin-left: 2em;
+}
+
+.navbar.navbar-default {
+  background-color: #FFFFFF;
+}
+
+.welcome-message {
+  color: #CCC;
+  text-transform: capitalize;
+  padding-top: 14px;
+}
+
+.due-in-week {
+  background-color: rgba(0,0,0,0.1)
 }

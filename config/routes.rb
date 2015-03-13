@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'authentication/new'
+
   resources :users
 
   resources :tasks
