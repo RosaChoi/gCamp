@@ -1,19 +1,15 @@
 Rails.application.routes.draw do
-  get 'authentication/new'
-
+  
   resources :users
-
-  resources :tasks
-
-  resources :projects
+  resources :projects do
+    resources :tasks
+  end
 
   root to: 'welcome#home'
 
   get 'about' => 'pages#about'
-
   get 'terms' => 'pages#terms'
-
-  get 'faq' => 'pages#faq'
+  get 'faq'   => 'pages#faq'
 
   get '/sign-up' => 'registrations#new', as: :signup
   post '/sign-up' => 'registrations#create'

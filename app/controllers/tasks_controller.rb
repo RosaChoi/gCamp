@@ -1,28 +1,31 @@
 class TasksController < ApplicationController
+  before_action :set_project
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
-  # GET /tasks
-  # GET /tasks.json
   def index
-    @tasks = Task.all
+    @tasks = @project.tasks
 
     if params[:complete]
-      @tasks = @tasks.where(complete: params[:complete])
+      @tasks = @project.tasks.where(complete: params[:complete])
       @active_page = "Incomplete Tasks"
     else
       @active_page = "All Tasks"
     end
 
-    if params[:order_by_description] == "true"
-      @tasks = @tasks.order(:description)
+    if params[:order_description] == "true"
+      @tasks = @project.tasks.all.order(:description)
     end
 
-    if params[:order_by_complete] == "true"
-      @tasks = @tasks.order(:complete)
+    if params[:complete] && params[:order_by_description] == "true"
+      @tasks = @project.tasks.where(complete: params[:complete]).order(:description)
     end
 
     if params[:order_by_due_date] == "true"
-      @tasks = @tasks.order(:due_date)
+      @tasks = @project.tasks.all.order(:due_date)
+    end
+
+    if params[:complete] && params[:order_by_due_date] == "true"
+      @tasks = @project.tasks.where(complete: params[:complete]).order(:due_date)
     end
 
     respond_to do |format|
@@ -35,14 +38,11 @@ class TasksController < ApplicationController
 
   end
 
-  # GET /tasks/1
-  # GET /tasks/1.json
   def show
   end
 
-  # GET /tasks/new
   def new
-    @task = Task.new
+    @task = @project.tasks.new
   end
 
   # GET /tasks/1/edit
@@ -52,11 +52,11 @@ class TasksController < ApplicationController
   # POST /tasks
   # POST /tasks.json
   def create
-    @task = Task.new(task_params)
+    @task = @project.tasks.new(task_params)
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to @task, notice: 'Task was successfully created.' }
+        format.html { redirect_to project_task_path(@project), notice: 'Task was successfully created.' }
         format.json { render :show, status: :created, location: @task }
       else
         format.html { render :new }
@@ -70,7 +70,7 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
+        format.html { redirect_to project_task_path(@project, @task), notice: 'Task was successfully updated.' }
         format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit }
@@ -84,7 +84,7 @@ class TasksController < ApplicationController
   def destroy
     @task.destroy
     respond_to do |format|
-      format.html { redirect_to tasks_url, notice: 'Task was successfully destroyed.' }
+      format.html { redirect_to project_tasks_path(@project), notice: 'Task was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -97,11 +97,15 @@ class TasksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_task
-      @task = Task.find(params[:id])
+      @task = @project.tasks.find(params[:id])
+    end
+
+    def set_project
+      @project = Project.find(params[:project_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:description, :complete, :due_date)
+      params.require(:task).permit(:description, :complete, :due_date, :project_id)
     end
 end
