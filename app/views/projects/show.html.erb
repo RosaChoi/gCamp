@@ -14,3 +14,6 @@
 <p>
   <%= link_to "#{pluralize(@project.tasks.count, "Task")}", project_tasks_path(@project) %>
 </p>
+<p>
+  <%= link_to "#{pluralize(@project.memberships.count, "Members")}", project_memberships_path(@project) %>
+</p>
