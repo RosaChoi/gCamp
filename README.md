@@ -1,31 +1,8 @@
-[![Build Status](https://travis-ci.org/waselrosa/gCamp.svg?branch=master)](https://travis-ci.org/waselrosa/gCamp)
-
-== README
+[![Build Status](https://travis-ci.org/RosaChoi/gCamp.svg?branch=master)](https://travis-ci.org/RosaChoi/gCamp)
 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#gCamp
 
-Things you may want to cover:
+##Project Management Made Easy
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+[Try it out](https://still-waters-3663.herokuapp.com/)

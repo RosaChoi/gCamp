@@ -10,107 +10,111 @@ feature 'Users' do
     fill_in "first-name-field", with: "Momo"
     fill_in "last-name-field", with: "Choi"
     fill_in "email-field", with: "momo@gmail.com"
+    fill_in "password-field", with: "momolove"
+    fill_in "password-confirmation-field", with: "momolove"
     click_on "submit-user"
 
     expect(page).to have_content("Momo")
     expect(page).to have_content("Choi")
     expect(page).to have_content("momo@gmail.com")
-
   end
 
-  scenario "User must enter in first name" do
-
-    visit root_path
-    click_on "get-users-index"
-    click_on "create-user-new-action"
-    fill_in "last-name-field", with: "Choi"
-    fill_in "email-field", with: "momo@gmail.com"
-    click_on "submit-user"
-    expect(page).to have_content("1 error prohibited this User from being saved:")
-
-    fill_in "first-name-field", with: "Momo"
-    click_on "submit-user"
-
-    expect(page).to have_content("Momo")
-  end
-
-  scenario "User must enter both first and last name" do
-
-    visit root_path
-    click_on "get-users-index"
-    click_on "create-user-new-action"
-    fill_in "email-field", with: "foxy@gmail.com"
-    click_on "submit-user"
-    expect(page).to have_content("2 errors prohibited this User from being saved")
-
-    fill_in "last-name-field", with: "Fox"
-    click_on "submit-user"
-    expect(page).to have_content("1 error prohibited this User from being saved")
-
-    fill_in "first-name-field", with: "Artic"
-    click_on "submit-user"
-    expect(page).to have_content("Artic")
-  end
-
-  scenario "User can't enter the same email as another user" do
-
+  scenario 'Edit a user' do
     user = User.create!(
     first_name: "Momo",
     last_name: "Eskie",
-    email: "momo@gmail.com"
+    email: "momo@gmail.com",
+    password: "momolove",
+    password_confirmation: "momolove",
+   )
+
+   visit root_path
+   click_on "get-users-index"
+   click_on "edit-user-#{user.id}-action"
+   fill_in "first-name-field", with: 'Mimi'
+   fill_in "last-name-field", with: "Poodle"
+   click_on "submit-user"
+
+   expect(page).to have_content("Mimi Poodle")
+   expect(page).to have_content("User was successfully updated")
+ end
+
+  scenario 'List all users' do
+    User.create!(
+      first_name: "Momo",
+      last_name: "Eskie",
+      email: "momo@gmail.com",
+      password: "momolove",
+      password_confirmation: "momolove",
+    )
+    User.create!(
+      first_name: "Rusty",
+      last_name: "Steele",
+      email: "rusty@steele.com",
+      password: "coltrusty",
+      password_confirmation: "coltrusty",
+    )
+    User.create!(
+      first_name: "Mimi",
+      last_name: "Poodle",
+      email: "mimi@poodle.com",
+      password: "mimipoodle",
+      password_confirmation: "mimipoodle",
     )
 
     visit root_path
-    click_on "get-users-index"
-    click_on "create-user-new-action"
-    fill_in "first-name-field", with: "Momo"
-    fill_in "last-name-field", with: "Eskie"
-    fill_in "email-field", with: "momo@gmail.com"
-    click_on "submit-user"
+    click_on "Users"
 
-    expect(page).to have_content("Email has already been taken")
-
-    fill_in "email-field", with: "test@gmail.com"
-    click_on "submit-user"
-    expect(page).to have_content("Eskie")
-
+    expect(page).to have_content("Momo Eskie")
+    expect(page).to have_content("Rusty Steele")
+    expect(page).to have_content("Mimi Poodle")
   end
 
-  scenario "User can edit a user" do
-    user = User.create!(
-    first_name: "Momo",
-    last_name: "Eskie",
-    email: "momo@gmail.com"
+  scenario 'Show a specific user' do
+    User.create!(
+      first_name: "Momo",
+      last_name: "Eskie",
+      email: "momo@gmail.com",
+      password: "momolove",
+      password_confirmation: "momolove",
+    )
+
+    User.create!(
+      first_name: "Rosa",
+      last_name: "Me",
+      email: "rosa@me.com",
+      password: "memememe",
+      password_confirmation: "memememe",
     )
 
     visit root_path
-    click_on "get-users-index"
-    expect(page).to have_content("momo@gmail.com")
-    click_on "edit-user-#{user.id}-action"
-    fill_in "first-name-field", with: "Mimi"
-    click_on "submit-user"
-
-    expect(page).to have_content("Mimi")
-    expect(page).to have_no_content("Momo")
+    click_on "Users"
+    click_on "Momo Eskie"
+    expect(page).to have_content("Momo Eskie")
+    expect(page).to_not have_content("Rosa Me")
   end
 
-  scenario "User can delete a user" do
-    user = User.create!(
-    first_name: "Christain",
-    last_name: "Bale",
-    email: "cbale@gmail.com"
+  scenario 'Delete user' do
+    User.create!(
+      first_name: "Rosa",
+      last_name: "Me",
+      email: "rosa@me.com",
+      password: "memememe",
+      password_confirmation: "memememe",
     )
 
     visit root_path
-    click_on "get-users-index"
-    expect(page).to have_content("Bale")
-    click_on "edit-user-#{user.id}-action"
+    click_on "Users"
+    click_on "Rosa Me"
+    click_on "Edit"
     click_on "destroy-user-action"
 
-    expect(page).to have_no_content("Christain")
-    expect(page).to have_no_content("Bale")
-    expect(page).to have_no_content("cbale@gmail.com")
-    expect(page.current_path).to eq(users_path)
+    expect(page).to_not have_content("Rosa Me")
+    expect(page).to have_content("User was successfully destroyed.")
   end
+
+
+
+
 
 end
