@@ -13,7 +13,7 @@ class MembershipsController < ApplicationController
     if @membership.save
       redirect_to project_memberships_path(@project), notice: "#{@membership.user.full_name} was added successfully"
     else
-      redirect_to project_memberships_path(@project), alert: membership.errors.full_messages
+      redirect_to project_memberships_path(@project), alert: @membership.errors.full_messages
     end
   end
 
