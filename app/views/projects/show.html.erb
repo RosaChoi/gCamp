@@ -7,13 +7,13 @@
 </div>
 
 <ol class="breadcrumb">
-  <li><%= link_to "Projects", project_path %></li>
+  <li><%= link_to "Projects", projects_path %></li>
   <li class="active"><%= @project.name %></li>
 </ol>
 
 <p>
-  <%= link_to "#{pluralize(@project.tasks.count, "Task")}", project_tasks_path(@project) %>
+  <%= link_to "#{pluralize(@project.tasks.count, 'Task')}", project_tasks_path(@project) %>
 </p>
 <p>
-  <%= link_to "#{pluralize(@project.memberships.count, "Members")}", project_memberships_path(@project) %>
+  <%= link_to "#{pluralize(@project.memberships.count, 'Members')}", project_memberships_path(@project) %>
 </p>

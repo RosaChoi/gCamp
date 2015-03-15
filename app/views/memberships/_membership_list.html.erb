@@ -1,0 +1,18 @@
+<% @memberships.each do |membership| %>
+  <% if membership.user %>
+    <div class="row form-inline">
+      <%= form_for [@project, membership], url:project_membership_path(@project, membership), method: :patch, html:{id: "edit_membership"} do |f| %>
+        <div class="col-sm-2 form-group member">
+          <%= link_to membership.user.full_name, membership.user %>
+        </div>
+        <div class="col-sm-1 form-group">
+          <%= f.select :role, ["member", "owner"], {include_blank: false}, {class: "form-control"} %>
+        </div>
+        <div class="col-sm-1 form-group">
+          <%= f.submit "Update", class: "btn btn-primary" %>
+        </div>
+        <span><%= link_to '', project_membership_path(@project, membership), method: :delete, class: "glyphicon glyphicon-remove control-label", data: { confirm: 'Are you sure?' } %></span>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
